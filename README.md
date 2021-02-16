@@ -1,4 +1,4 @@
-# Lottie Animation View for React ([Angular](https://github.com/chenqingspring/ng-lottie), [Vue](https://github.com/chenqingspring/vue-lottie))
+# Lottie Animation View for React
 
 [![npm version](https://badge.fury.io/js/react-lottie.svg)](http://badge.fury.io/js/react-lottie)
 
@@ -28,51 +28,93 @@ Looking for lottie files › https://www.lottiefiles.com/
 
 Install through npm:
 ```
-npm install --save react-lottie
+npm install --save react-lottie-v2
 ```
 
 ## Usage
 
-Import pinjump.json.json as animation data
-
 ```jsx
-import React from 'react'
-import Lottie from 'react-lottie';
-import * as animationData from './pinjump.json'
+import * as React from "react";
+import Lottie from "../index";
+import animationDataA from "./pinjump.json";
+import animationDataB from "./TwitterHeart.json";
 
-export default class LottieControl extends React.Component {
+const { useState } = React;
 
-  constructor(props) {
-    super(props);
-    this.state = {isStopped: false, isPaused: false};
-  }
+export default function LottieControl() {
+  const [state, setState] = useState({
+    isStopped: false,
+    isPaused: false,
+    speed: 1,
+    direction: 1,
+    isDataA: true,
+  });
+  const centerStyle = {
+    display: "block",
+    margin: "10px auto",
+    textAlign: "center",
+  };
+  const { isStopped, isPaused, direction, speed, isDataA } = state;
+  const defaultOptions = {
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    },
+    animationData: isDataA ? animationDataA : animationDataB,
+  };
+  return (
+    <div>
+      <Lottie
+        options={defaultOptions}
+        height={400}
+        width={400}
+        isStopped={isStopped}
+        isPaused={isPaused}
+        speed={speed}
+        direction={direction}
+      />
 
-  render() {
-    const buttonStyle = {
-      display: 'block',
-      margin: '10px auto'
-    };
-
-    const defaultOptions = {
-      loop: true,
-      autoplay: true, 
-      animationData: animationData,
-      rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice'
-      }
-    };
-
-    return <div>
-      <Lottie options={defaultOptions}
-              height={400}
-              width={400}
-              isStopped={this.state.isStopped}
-              isPaused={this.state.isPaused}/>
-      <button style={buttonStyle} onClick={() => this.setState({isStopped: true})}>stop</button>
-      <button style={buttonStyle} onClick={() => this.setState({isStopped: false})}>play</button>
-      <button style={buttonStyle} onClick={() => this.setState({isPaused: !this.state.isPaused})}>pause</button>
+      <p style={centerStyle}>Speed: x{speed}</p>
+      <input
+        style={centerStyle}
+        type="range"
+        value={speed}
+        min="0"
+        max="3"
+        step="0.5"
+        onChange={(e) => setState({ ...state, speed: e.currentTarget.value })}
+      />
+      <button
+        style={centerStyle}
+        onClick={() => setState({ ...state, isStopped: true })}
+      >
+        stop
+      </button>
+      <button
+        style={centerStyle}
+        onClick={() => setState({ ...state, isStopped: false })}
+      >
+        play
+      </button>
+      <button
+        style={centerStyle}
+        onClick={() => setState({ ...state, isPaused: !isPaused })}
+      >
+        pause
+      </button>
+      <button
+        style={centerStyle}
+        onClick={() => setState({ ...state, direction: direction * -1 })}
+      >
+        change direction
+      </button>
+      <button
+        style={centerStyle}
+        onClick={() => setState({ ...state, isDataA: !isDataA })}
+      >
+        toggle animation
+      </button>
     </div>
-  }
+  );
 }
 
 ```
@@ -113,16 +155,6 @@ eventListeners=[
   },
 ]
 ```
-
-## Related Projects
-
-* [Bodymovin](https://github.com/bodymovin/bodymovin) react-lottie is a wrapper of bodymovin
-* [Angular Lottie](https://github.com/chenqingspring/ng-lottie) angular implementation
-* [Vue Lottie](https://github.com/chenqingspring/vue-lottie) vue implementation
-* [React Native Lottie](https://github.com/airbnb/lottie-react-native) react native implementation by airbnb
-* [IOS Lottie](https://github.com/airbnb/lottie-ios) ios implementation by airbnb
-* [Android Lottie](https://github.com/airbnb/lottie-android) android implementation by airbnb
-
 ## Contribution
 Your contributions and suggestions are heartily welcome.
 
