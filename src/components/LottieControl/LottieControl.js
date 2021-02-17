@@ -1,7 +1,7 @@
 import * as React from "react";
-import Lottie from "../index";
-import animationDataA from "./pinjump.json";
-import animationDataB from "./TwitterHeart.json";
+import Lottie from "../../index";
+import animationDataA from "../../lotties/pinjump.json";
+import animationDataB from "../../lotties/TwitterHeart.json";
 
 const { useState } = React;
 
@@ -21,7 +21,7 @@ export default function LottieControl() {
   const { isStopped, isPaused, direction, speed, isDataA } = state;
   const defaultOptions = {
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
+      preserveAspectRatio: "xMidYMid slice",
     },
     animationData: isDataA ? animationDataA : animationDataB,
   };

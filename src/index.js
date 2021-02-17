@@ -24,20 +24,23 @@ export default function Lottie({
   const [_options, setOptions] = useState({});
   const [anim, setAnim] = useState(null);
 
-  const registerEvents = useCallback((eventListeners) => {
+  const registerEvents = (eventListeners, _anim = null) => {
+    _anim = _anim === null ? anim : _anim
     eventListeners?.forEach((eventListener) => {
-      anim?.addEventListener(eventListener.eventName, eventListener.callback);
+      _anim?.addEventListener(eventListener?.eventName, eventListener?.callback);
     });
-  });
+  };
 
-  const deRegisterEvents = useCallback((eventListeners) => {
+  const deRegisterEvents = (eventListeners, _anim = null) => {
+    _anim = _anim === null ? anim : _anim
     eventListeners?.forEach((eventListener) => {
-      anim?.removeEventListener(
-        eventListener.eventName,
-        eventListener.callback
+      console.log(eventListener)
+      _anim?.removeEventListener(
+        eventListener?.eventName,
+        eventListener?.callback
       );
     });
-  });
+  };
 
   const play = useCallback(() => {
     anim?.play();
@@ -73,7 +76,7 @@ export default function Lottie({
     anim?.setDirection(direction);
   }, [direction]);
 
-  useEffect(() => {
+  const pause = useCallback(() => {
     if (isPaused && !anim?.isPaused) {
       anim?.pause();
     } else if (!isPaused && anim?.isPaused) {
@@ -92,9 +95,9 @@ export default function Lottie({
         autoplay: autoplay !== false,
         segments: segments !== false,
       };
-
-      setAnim(lottie.loadAnimation(localOptions));
-      registerEvents(eventListeners);
+      const _anim = lottie.loadAnimation(localOptions)
+      setAnim(_anim);
+      registerEvents(eventListeners, _anim);
       return localOptions;
     });
 
@@ -115,6 +118,7 @@ export default function Lottie({
       } else {
         play();
       }
+      pause();
     }
   }, [anim, isStopped, isPaused, segments]);
 
@@ -130,13 +134,14 @@ export default function Lottie({
             ..._options,
             ...options,
           };
-          setAnim(lottie.loadAnimation(localOptions));
-          registerEvents(eventListeners);
+          const _anim = lottie.loadAnimation(localOptions)
+          setAnim(_anim);
+          registerEvents(eventListeners, _anim);
           return localOptions;
         });
       }
     }
-  }, [options, _options]);
+  }, [options, _options, eventListeners]);
 
   const getSize = (initial) => {
     let size;
