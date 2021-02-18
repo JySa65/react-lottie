@@ -1,9 +1,9 @@
 # Lottie Animation View for React
 
-[![npm version](https://badge.fury.io/js/react-lottie.svg)](http://badge.fury.io/js/react-lottie)
+[![npm version](https://badge.fury.io/js/react-lotties.svg)](https://badge.fury.io/js/react-lotties)
 
 ## Demo
-https://chenqingspring.github.io/react-lottie
+https://jysa65.github.io/react-lottie/
 
 ## Wapper of bodymovin.js
 
