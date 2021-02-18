@@ -1,2 +1,5 @@
 src
 .babelrc
+node_modules
+storybook-static
+.scripts
