@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 9010",
-    "publish-storybook": "bash .scripts/publish_storybook.sh",
+    "publish-storybook": "bash .scripts/publish_storybook.sh storybook-static",
     "postpublish": "npm run publish-storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
