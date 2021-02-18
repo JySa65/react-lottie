@@ -1,3 +1,9 @@
 {
-  "presets": ["react-app"]
+  "presets": ["react-app"],
+  "plugins": ["@babel/plugin-transform-runtime"],
+  "ignore": [
+    "./src/assets",
+    "./src/components",
+    "./src/lotties"
+  ]
 }

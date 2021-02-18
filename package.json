@@ -8,14 +8,18 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "start-storybook -p 9010",
+    "start": "npm run storybook",
     "publish-storybook": "bash .scripts/publish_storybook.sh storybook-static",
     "postpublish": "npm run publish-storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublish": "bash .scripts/prepublish.sh"
+
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/cli": "^7.12.17",
+    "@babel/core": "^7.12.17",
+    "@babel/plugin-transform-runtime": "^7.12.17",
     "@storybook/addon-actions": "^6.1.18",
     "@storybook/addon-controls": "^6.1.18",
     "@storybook/addon-essentials": "^6.1.18",
