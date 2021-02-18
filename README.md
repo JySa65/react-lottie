@@ -28,7 +28,7 @@ Looking for lottie files › https://www.lottiefiles.com/
 
 Install through npm:
 ```
-npm install --save react-lottie-v2
+npm install --save react-lotties
 ```
 
 ## Usage

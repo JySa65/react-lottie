@@ -1,6 +1,6 @@
 {
-  "name": "react-lottie-v2",
-  "version": "0.0.1",
+  "name": "react-lotties",
+  "version": "0.0.2",
   "description": "lottie animation view for React",
   "repository": {
     "type": "git",
