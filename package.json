@@ -27,7 +27,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "esbuild": "^0.8.48",
+    "esbuild": "^0.8.48"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0"
