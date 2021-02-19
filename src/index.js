@@ -1,11 +1,10 @@
-import React from "react";
+import * as React from "react";
 import { arrayOf, object, string, number, bool, oneOfType } from "prop-types";
-// import lottie from "lottie-web";
-const lottie = require("lottie-web");
+import lottie from "lottie-web";
 
-const { useRef, useEffect, useState, useCallback } = React;
+const { useRef, useEffect, useState, useCallback } = React
 
-export default function Lottie({
+const Lottie = ({
   eventListeners,
   options,
   height,
@@ -20,7 +19,7 @@ export default function Lottie({
   isClickToPauseDisabled,
   title,
   style,
-}) {
+}) => {
   const el = useRef(null);
   const [_options, setOptions] = useState({});
   const [anim, setAnim] = useState(null);
@@ -211,3 +210,5 @@ Lottie.defaultProps = {
   isClickToPauseDisabled: false,
   title: "",
 };
+
+export default Lottie
