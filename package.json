@@ -1,6 +1,6 @@
 {
   "name": "react-lotties",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "lottie animation view for React",
   "repository": {
     "type": "git",
@@ -18,16 +18,20 @@
   "devDependencies": {
     "@babel/cli": "^7.12.17",
     "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/runtime": "^7.12.18",
     "@storybook/addon-actions": "^6.1.18",
     "@storybook/addon-controls": "^6.1.18",
     "@storybook/addon-essentials": "^6.1.18",
     "@storybook/addon-links": "^6.1.18",
     "@storybook/react": "^6.1.18",
     "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "esbuild": "^0.8.48"
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0"
