@@ -3,3 +3,4 @@ src
 node_modules
 storybook-static
 .scripts
+.eslintrc
