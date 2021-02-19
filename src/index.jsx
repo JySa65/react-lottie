@@ -1,6 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { arrayOf, object, string, number, bool, oneOfType } from "prop-types";
-import lottie from "lottie-web";
+// import lottie from "lottie-web";
+const lottie = require("lottie-web");
 
 const { useRef, useEffect, useState, useCallback } = React;
 
@@ -25,16 +26,19 @@ export default function Lottie({
   const [anim, setAnim] = useState(null);
 
   const registerEvents = (eventListeners, _anim = null) => {
-    _anim = _anim === null ? anim : _anim
+    _anim = _anim === null ? anim : _anim;
     eventListeners?.forEach((eventListener) => {
-      _anim?.addEventListener(eventListener?.eventName, eventListener?.callback);
+      _anim?.addEventListener(
+        eventListener?.eventName,
+        eventListener?.callback
+      );
     });
   };
 
   const deRegisterEvents = (eventListeners, _anim = null) => {
-    _anim = _anim === null ? anim : _anim
+    _anim = _anim === null ? anim : _anim;
     eventListeners?.forEach((eventListener) => {
-      console.log(eventListener)
+      console.log(eventListener);
       _anim?.removeEventListener(
         eventListener?.eventName,
         eventListener?.callback
@@ -95,7 +99,7 @@ export default function Lottie({
         autoplay: autoplay !== false,
         segments: segments !== false,
       };
-      const _anim = lottie.loadAnimation(localOptions)
+      const _anim = lottie.loadAnimation(localOptions);
       setAnim(_anim);
       registerEvents(eventListeners, _anim);
       return localOptions;
@@ -134,7 +138,7 @@ export default function Lottie({
             ..._options,
             ...options,
           };
-          const _anim = lottie.loadAnimation(localOptions)
+          const _anim = lottie.loadAnimation(localOptions);
           setAnim(_anim);
           registerEvents(eventListeners, _anim);
           return localOptions;
